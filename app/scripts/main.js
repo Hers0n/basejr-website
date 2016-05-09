@@ -1,9 +1,10 @@
 //=require includes/breakpoints.js
+//=require includes/header.js
 
 const App = function () {
 
   function init() {
-
+    Header.init();
   }
 
   return {

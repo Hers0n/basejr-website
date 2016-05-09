@@ -16,6 +16,7 @@ const middleware = function (req, res, next) {
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
+    .pipe($.include())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
