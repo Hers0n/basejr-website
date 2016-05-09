@@ -1,0 +1,27 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: $fw-normal;
+  color: $c-text;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  @include clearfix();
+}
+
+@include medium() {
+  .container {
+    max-width: $ct-medium;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@include large() {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

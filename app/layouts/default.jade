@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+
+    title Base Jr.
+
+    meta(name='description' content='')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+
+    link(rel='apple-touch-icon' href='apple-touch-icon.png')
+
+    <!--[if IE 8]>
+    script(src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js')
+    <![endif]-->
+
+    // build:css styles/main.css
+    link(rel='stylesheet' href='styles/main.css')
+    // endbuild
+
+  body
+
+    .page
+      include ../partials/header
+
+      block content
+
+      include ../partials/footer
+
+    //@formatter:off
+    script.
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    //@formatter:on
+
+    // build:js scripts/main.js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src = 'scripts/main.js')
+    // endbuild
