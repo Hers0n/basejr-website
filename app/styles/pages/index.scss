@@ -12,7 +12,7 @@
   .title {
     display: block;
     margin: -40px 0 20px;
-    font-size: 38px;
+    font-size: 34px;
     line-height: 40px;
     font-weight: $fw-extra-light;
     color: $c-text-light;
@@ -36,24 +36,95 @@
   }
 }
 
+.about {
+  padding: 60px 0 70px;
+
+  .item {
+    max-width: 320px;
+    margin: 0 auto;
+
+    & + .item {
+      margin-top: 60px;
+    }
+
+    .image {
+      margin-bottom: 20px;
+      text-align: center;
+
+      img {
+        max-height: 80px;
+      }
+    }
+
+    .text {
+      text-align: center;
+
+      p {
+        margin: 0;
+        font-weight: $fw-light;
+      }
+    }
+  }
+}
+
+.portfolio {
+  background: $c-portfolio;
+}
+
+@include medium() {
+
+  .about {
+    text-align: center;
+
+    .item {
+      max-width: none;
+      width: 50%;
+
+      &:first-child {
+        float: left;
+      }
+
+      &:last-child {
+        float: right;
+      }
+
+      & + .item {
+        margin-top: 0;
+      }
+
+      .text {
+        width: 380px;
+        margin: 0 auto;
+        padding: 0 20px;
+        font-size: 18px;
+      }
+    }
+  }
+
+}
+
 @include large() {
   .welcome {
-    min-height: 0;
+    min-height: 80vh;
     max-height: 100vh;
 
     .title {
       margin: 160px 0 20px;
-      font-size: 52px;
-      line-height: 54px;
+      font-size: 42px;
+      line-height: 44px;
     }
 
     .sub-title {
-      margin: 0 0 160px;
+      margin: 0 0 180px;
       font-size: 18px;
     }
 
     .keep-going {
       display: none;
     }
+  }
+
+  .about .item .text {
+    width: 420px;
   }
 }

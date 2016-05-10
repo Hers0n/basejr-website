@@ -24,10 +24,6 @@ body {
   padding-top: 80px;
 }
 
-.button-join {
-
-}
-
 @include medium() {
   .container {
     max-width: $ct-medium;
