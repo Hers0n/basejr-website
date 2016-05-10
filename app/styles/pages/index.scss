@@ -1,7 +1,7 @@
-.welcome {
+.index_welcome {
   position: relative;
   min-height: 100vh;
-  background: url('../images/bg-welcome.png') no-repeat top center;
+  background: url('../images/bg-welcome.png') no-repeat top left;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -36,8 +36,8 @@
   }
 }
 
-.about {
-  padding: 60px 0 70px;
+.index_about {
+  padding: 60px 0 80px;
 
   .item {
     max-width: 320px;
@@ -67,13 +67,50 @@
   }
 }
 
-.portfolio {
-  background: $c-portfolio;
+.index_portfolio {
+  padding: 60px 0 80px;
+  background: $c-base;
+
+  .title {
+    margin: 0 0 60px;
+    font-size: 28px;
+    text-align: center;
+    color: $c-text-light;
+    font-weight: $fw-light;
+  }
+
+  .item {
+    max-width: 320px;
+    margin: 0 auto;
+
+    & + .item {
+      margin-top: 70px;
+    }
+
+    .image {
+      margin-bottom: 10px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .legend {
+
+      p {
+        margin: 0;
+        font-size: 18px;
+        text-align: center;
+        color: $c-text-light;
+        font-weight: $fw-light;
+      }
+    }
+
+  }
 }
 
 @include medium() {
-
-  .about {
+  .index_about {
     text-align: center;
 
     .item {
@@ -93,25 +130,24 @@
       }
 
       .text {
-        width: 380px;
+        width: 320px;
         margin: 0 auto;
         padding: 0 20px;
         font-size: 18px;
       }
     }
   }
-
 }
 
 @include large() {
-  .welcome {
+  .index_welcome {
     min-height: 80vh;
     max-height: 100vh;
 
     .title {
       margin: 160px 0 20px;
-      font-size: 42px;
-      line-height: 44px;
+      font-size: 52px;
+      line-height: 54px;
     }
 
     .sub-title {
@@ -124,7 +160,24 @@
     }
   }
 
-  .about .item .text {
-    width: 420px;
+  .index_about .item .text {
+    width: 340px;
+  }
+
+  .index_portfolio {
+
+    .item {
+      float: left;
+      width: 33.3333%;
+      max-width: none;
+      padding: 0 10px;
+
+      & + .item {
+        margin-top: 0;
+      }
+
+
+    }
+
   }
 }
