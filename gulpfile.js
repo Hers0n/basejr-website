@@ -4,6 +4,7 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
+const exec = require('child_process').exec;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -81,7 +82,7 @@ gulp.task('html', ['views', 'styles', 'scripts'], () => {
     .pipe($.if('*.css', $.rev()))
     .pipe($.revReplace())
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/public'));
 });
 
 gulp.task('images', () => {
@@ -93,7 +94,7 @@ gulp.task('images', () => {
       // as hooks for embedding and styling
       svgoPlugins: [{cleanupIDs: false}]
     })))
-    .pipe(gulp.dest('dist/images'));
+    .pipe(gulp.dest('dist/public/images'));
 });
 
 gulp.task('extras', () => {
@@ -103,10 +104,8 @@ gulp.task('extras', () => {
     '!app/*.pug'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'));
+  }).pipe(gulp.dest('dist/public'));
 });
-
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['views', 'styles', 'scripts'], () => {
   browserSync({
@@ -140,7 +139,7 @@ gulp.task('serve:dist', () => {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['dist'],
+      baseDir: ['dist/public'],
       middleware
     }
   });
@@ -182,15 +181,37 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
+gulp.task('clean', del.bind(null, ['.tmp', 'dist/public']));
+
 gulp.task('build', ['lint', 'html', 'images', 'extras'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('dist/public/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('deploy', ['build'], () => {
-  return gulp.src('dist')
-    .pipe($.subtree())
-    .pipe($.clean());
+gulp.task('git-add', (cb) => {
+  exec('cd dist/; git add .', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
 });
+
+gulp.task('git-commit', ['git-add'], (cb) => {
+  exec('cd dist/; git commit -am "automated commit"', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
+gulp.task('git-push', ['git-commit'], (cb) => {
+  exec('cd dist/; git push heroku master', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
+gulp.task('publish', ['git-push']);
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');

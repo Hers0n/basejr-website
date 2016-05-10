@@ -3,5 +3,7 @@ node_modules
 bower_components
 test/bower_components
 
+npm-debug.log
+dist/public
 .DS_Store
 .idea
