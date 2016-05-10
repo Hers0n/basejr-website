@@ -10,4 +10,5 @@
   - `num run serve:dist` - preview `dist/public`
 
 ### Deploy
+  - [Do the heroku thing](https://toolbelt.heroku.com/)
   - `npm run deploy` - builds and deploys to heroku

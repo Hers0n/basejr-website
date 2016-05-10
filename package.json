@@ -46,7 +46,7 @@
     }
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install; mv package.dist.json dist/package.json; mv server.dist.js dist/server.js",
     "start": "gulp serve",
     "serve:dist": "gulp clean; gulp build; gulp serve:dist",
     "build": "gulp clean; gulp build",
