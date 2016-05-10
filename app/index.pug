@@ -1,0 +1,75 @@
+extends layouts/default
+
+block content
+  section.index_welcome
+    .container
+      h1.main-title.
+        Soluções personalizadas
+        #[br]
+        em engenharia e gestão
+      p.main-sub-title.
+        Desenvolver pessoas e concretizar sonhos
+    i.keep-going.material-icons keyboard_arrow_down
+
+  section.index_about
+    .container
+      h1.title Conheça a nossa Empresa Júnior
+
+      .items
+        .item
+          .image
+            img(src='../images/icon-logo3.png')
+          .text
+            p.text-content.
+              A Base Jr. é uma Empresa Júnior de Engenharia Civil e é formada exclusivamente por estudantes em fase de graduação.
+
+        .item
+          .image
+            img(src='../images/icon-bj.png')
+          .text
+            p.text-content.
+              O Movimento de Empresa Júnior (MEJ) iniciou-se na França na década de 60. No Brasil, o movimento foi introduzido em 1988.
+
+      .see-more
+        a(href='/sobre.html') Leia mais
+
+  section.index_portfolio
+    .container
+      h1.title Conheça os nossos produtos
+
+      .items
+        .item
+          .image
+            img(src='../images/icon-design.png')
+          .text
+            p.text-title Desenho Arquitetônico
+            p.text-content.
+              Plantas baixas, Cortes, Fachadas e todo o material que compõe o desenho técnico.
+
+        .item
+          .image
+            img(src='../images/icon-administration.png')
+          .text
+            p.text-title Plano Diretor de Centros Acadêmicos
+            p.text-content.
+              Consultoria em mapeamento de salas e de infraestrutura voltados para centros acadêmicos de universidades e faculdades.
+
+      .items
+        .item
+          .image
+            img(src='../images/icon-brokerage.png')
+          .text
+            p.text-title Cadastramento Imobiliário
+            p.text-content.
+              Gestão e suporte na elaboração de plantas baixas para cadastramento imobiliário perante a prefeitura, acompanhamento e gestão das etapas a serem cumpridas pelo cliente.
+
+        .item
+          .image
+            img(src='../images/icon-project.png')
+          .text
+            p.text-title Gerenciamento de Obras
+            p.text-content.
+              Aplicação dos conceitos de Lean Construction em obras civis para a busca de melhoria contínua e o aperfeiçoamento dos processos dentro da construção.
+
+      .see-more
+        a(href='/portfolio.html') Leia mais

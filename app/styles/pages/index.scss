@@ -1,29 +1,30 @@
 .index_welcome {
   position: relative;
   min-height: 100vh;
-  background: url('../images/bg-welcome.png') no-repeat top left;
+  background: url('../images/bg-site.png') no-repeat top left;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
   z-index: 100;
+  text-align: center;
 
-  .title {
+  .main-title {
     display: block;
     margin: -40px 0 20px;
     font-size: 34px;
     line-height: 40px;
-    font-weight: $fw-extra-light;
+    font-weight: $fw-light;
     color: $c-text-light;
   }
 
-  .sub-title {
+  .main-sub-title {
     display: block;
     margin: 0;
     padding: 0;
     color: $c-text-light;
-    font-weight: $fw-extra-light;
+    font-weight: $fw-light;
   }
 
   .keep-going {
@@ -37,147 +38,47 @@
 }
 
 .index_about {
-  padding: 60px 0 80px;
-
-  .item {
-    max-width: 320px;
-    margin: 0 auto;
-
-    & + .item {
-      margin-top: 60px;
-    }
-
-    .image {
-      margin-bottom: 20px;
-      text-align: center;
-
-      img {
-        max-height: 80px;
-      }
-    }
-
-    .text {
-      text-align: center;
-
-      p {
-        margin: 0;
-        font-weight: $fw-light;
-      }
-    }
-  }
+  padding: 60px 0;
 }
 
 .index_portfolio {
-  padding: 60px 0 80px;
+  padding: 60px 0;
   background: $c-base;
 
-  .title {
-    margin: 0 0 60px;
-    font-size: 28px;
-    text-align: center;
+  .title,
+  .items .item .text {
     color: $c-text-light;
-    font-weight: $fw-light;
   }
 
-  .item {
-    max-width: 320px;
-    margin: 0 auto;
+  .see-more a {
+    color: $c-text-light;
+    border-color: $c-text-light;
 
-    & + .item {
-      margin-top: 70px;
-    }
-
-    .image {
-      margin-bottom: 10px;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    .legend {
-
-      p {
-        margin: 0;
-        font-size: 18px;
-        text-align: center;
-        color: $c-text-light;
-        font-weight: $fw-light;
-      }
-    }
-
-  }
-}
-
-@include medium() {
-  .index_about {
-    text-align: center;
-
-    .item {
-      max-width: none;
-      width: 50%;
-
-      &:first-child {
-        float: left;
-      }
-
-      &:last-child {
-        float: right;
-      }
-
-      & + .item {
-        margin-top: 0;
-      }
-
-      .text {
-        width: 320px;
-        margin: 0 auto;
-        padding: 0 20px;
-        font-size: 18px;
-      }
+    &:hover {
+      background: $c-text-light;
+      color: $c-base;
     }
   }
 }
 
 @include large() {
   .index_welcome {
-    min-height: 80vh;
+    min-height: 70vh;
     max-height: 100vh;
 
-    .title {
-      margin: 160px 0 20px;
+    .main-title {
+      margin: 120px 0 20px;
       font-size: 52px;
       line-height: 54px;
     }
 
-    .sub-title {
-      margin: 0 0 180px;
+    .main-sub-title {
+      margin: 0 0 140px;
       font-size: 18px;
     }
 
     .keep-going {
       display: none;
     }
-  }
-
-  .index_about .item .text {
-    width: 340px;
-  }
-
-  .index_portfolio {
-
-    .item {
-      float: left;
-      width: 33.3333%;
-      max-width: none;
-      padding: 0 10px;
-
-      & + .item {
-        margin-top: 0;
-      }
-
-
-    }
-
   }
 }

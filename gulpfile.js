@@ -65,9 +65,9 @@ gulp.task('lint:test', () => {
 });
 
 gulp.task('views', () => {
-  return gulp.src('app/*.jade')
+  return gulp.src('app/*.pug')
     .pipe($.plumber())
-    .pipe($.jade({pretty: true}))
+    .pipe($.pug({pretty: true}))
     .pipe(gulp.dest('.tmp'))
     .pipe(reload({stream: true}));
 });
@@ -100,7 +100,7 @@ gulp.task('extras', () => {
   return gulp.src([
     'app/*.*',
     '!app/*.html',
-    '!app/*.jade'
+    '!app/*.pug'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
@@ -128,7 +128,7 @@ gulp.task('serve', ['views', 'styles', 'scripts'], () => {
     'app/images/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/**/*.jade', ['views']);
+  gulp.watch('app/**/*.pug', ['views']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('bower.json', ['wiredep']);
@@ -175,7 +175,7 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app/styles'));
 
-  gulp.src('app/layouts/*.jade')
+  gulp.src('app/layouts/*.pug')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)*\.\./
     }))
