@@ -1,5 +1,59 @@
 .welcome {
+  position: relative;
   min-height: 100vh;
-  background: url('../images/bg-welcome.png') no-repeat center center;
+  background: url('../images/bg-welcome.png') no-repeat top center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  z-index: 100;
+
+  .title {
+    display: block;
+    margin: -40px 0 20px;
+    font-size: 38px;
+    line-height: 40px;
+    font-weight: $fw-extra-light;
+    color: $c-text-light;
+  }
+
+  .sub-title {
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: $c-text-light;
+    font-weight: $fw-extra-light;
+  }
+
+  .keep-going {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: $c-text-light;
+  }
+}
+
+@include large() {
+  .welcome {
+    min-height: 0;
+    max-height: 100vh;
+
+    .title {
+      margin: 160px 0 20px;
+      font-size: 52px;
+      line-height: 54px;
+    }
+
+    .sub-title {
+      margin: 0 0 160px;
+      font-size: 18px;
+    }
+
+    .keep-going {
+      display: none;
+    }
+  }
 }

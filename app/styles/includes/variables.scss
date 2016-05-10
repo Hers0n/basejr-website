@@ -4,14 +4,15 @@ $bp-medium: 768px !default;
 $bp-large: 1200px !default;
 
 // Containers
-$ct-medium: 980px !default;
+$ct-medium: 1020px !default;
 
 // Font weights
+$fw-extra-light: 100 !default;
 $fw-light: 300 !default;
 $fw-normal: 400 !default;
-$fw-bold: 600 !default;
-$fw-extra-bold: 700 !default;
+$fw-bold: 700 !default;
 
 // Colors
-$c-text: #333333 !default;
-$c-text-light: #f6f6f6 !default;;
+$c-text: #727376 !default;
+$c-text-light: #ffffff !default;
+$c-base: #3CA2C3 !default;
