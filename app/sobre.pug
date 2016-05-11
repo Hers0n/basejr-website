@@ -1,22 +1,29 @@
 extends layouts/default
 
+block variables
+  - var header_dark = true
+
 block content
-  section.about_welcome
+  section.sobre_welcome
     .container
-      h1.title Sobre
+      h1.title Conheça a nossa Empresa Júnior
 
-  section.about_explained
+  section.sobre_explained
     .container
-      .item
-        .image
-          img(src='../images/icon-logo3.png')
-        .text
-          p.
-            A Base Jr. é uma Empresa Júnior de Engenharia Civil e é formada exclusivamente por estudantes em fase de graduação. O principal objetivo é capacitar membros na realização de projetos e na gestão empresarial, possibilitando a eles, ainda na graduação, ter contato real com o mercado de trabalho.
+      .items.items-1-2
+        .item
+          .image
+            img(src='../images/icon-bj.png')
+        .item
+          .text
+            p.text-content.
+              O Movimento de Empresa Júnior (MEJ) iniciou-se na França na década de 60. No Brasil, o movimento foi introduzido em 1988. As primeiras Empresas Juniores brasileiras começaram a surgir no final de 1988, com a criação da Empresa Júnior da FGV (Fundação Getúlio Vargas - SP). Atualmente, o Brasil tem cerca de 700 EJ’s, sendo o nosso país o que tem maior número de empresas no mundo!
 
-      .item
-        .image
-          img(src='../images/icon-bj.png')
-        .text
-          p.
-            O Movimento de Empresa Júnior (MEJ) iniciou-se na França na década de 60. No Brasil, o movimento foi introduzido em 1988. As primeiras Empresas Juniores brasileiras começaram a surgir no final de 1988, com a criação da Empresa Júnior da FGV (Fundação Getúlio Vargas - SP). Atualmente, o Brasil tem cerca de 700 EJ’s, sendo o nosso país o que tem maior número de empresas no mundo!
+      .items.items-1-2
+        .item
+          .image
+            img(src='../images/icon-logo3.png')
+        .item
+          .text
+            p.text-content.
+              A Base Jr. é uma Empresa Júnior de Engenharia Civil e é formada exclusivamente por estudantes em fase de graduação. O principal objetivo é capacitar os membros na realização de projetos e na gestão empresarial, possibilitando a eles, ainda na graduação, ter contato com as dificuldades do mercado de trabalho. Para isso contamos com a orientação e apoio dos professores da Universidade Federal de Santa Maria e também com profissionais renomados na área, que nos auxiliam como parceiros da empresa.

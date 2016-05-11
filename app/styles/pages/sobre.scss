@@ -1,0 +1,24 @@
+.sobre_welcome {
+  position: relative;
+
+  .container {
+    padding-top: 60px;
+  }
+}
+
+@include medium() {
+  .sobre_explained {
+    .items .item .text {
+      text-align: left;
+      text-indent: 60px;
+    }
+  }
+}
+
+@include large() {
+  .sobre_explained {
+    .items .item:last-child {
+      max-width: 500px;
+    }
+  }
+}

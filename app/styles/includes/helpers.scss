@@ -15,7 +15,7 @@ body {
 
 .page {
   position: relative;
-} 
+}
 
 .container {
   width: 100%;
@@ -26,6 +26,7 @@ body {
 
 .content > section:first-child {
   padding-top: 80px;
+  z-index: 100;
 }
 
 .title {
@@ -59,11 +60,12 @@ body {
 
       .text-title {
         margin: 0 0 15px;
-        font-size: 18px;
+        font-size: 20px;
       }
 
       .text-content {
         margin: 0;
+        font-size: 18px;
         font-weight: $fw-light;
       }
     }
@@ -132,6 +134,10 @@ body {
     margin-right: auto;
   }
 
+  .content > section:first-child {
+    padding-top: 100px;
+  }
+
   .title {
     font-size: 32px;
   }
@@ -139,6 +145,18 @@ body {
   .items {
     max-width: 700px;
     @include clearfix();
+
+    &.items-1-2 {
+      .item {
+        &:first-child {
+          width: 200px;
+        }
+
+        &:last-child {
+          max-width: 400px;
+        }
+      }
+    }
 
     .item {
       max-width: 320px;
@@ -164,23 +182,19 @@ body {
     padding-right: 0;
   }
 
-  .content > section:first-child {
-    padding-top: 100px;
-  }
-
   .title {
     font-size: 36px;
   }
 
   .items {
-    max-width: 800px;
+    max-width: 920px;
+
+    &.items-1-2 .item:last-child {
+      max-width: 500px;
+    }
 
     .item {
       max-width: 350px;
-
-      .text .text-title {
-        font-size: 20px;
-      }
     }
   }
 }

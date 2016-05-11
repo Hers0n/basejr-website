@@ -1,0 +1,20 @@
+.portfolio_welcome {
+  position: relative;
+
+  .container {
+    padding-top: 60px;
+  }
+}
+
+.portfolio_explained {
+  .items .item .image img {
+    border: 2px solid $c-base;
+    border-radius: 50%;
+  }
+}
+
+@include medium() {
+  .portfolio_explained .items .item {
+    text-align: left;
+  }
+}

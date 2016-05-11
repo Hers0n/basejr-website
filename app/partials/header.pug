@@ -1,4 +1,9 @@
-header.header
+- var header = "header class='header'";
+
+if header_dark
+  - var header = "header class='header header--dark'";
+
+#{header}
   .container
     .header-logo
       a(href='/')
