@@ -39,6 +39,10 @@
 
 .index_about {
   padding: 60px 0;
+
+  .items .item .text {
+    font-size: 18px;
+  }
 }
 
 .index_portfolio {
@@ -48,6 +52,10 @@
   .title,
   .items .item .text {
     color: $c-text-light;
+  }
+
+  .items .item .text .text-content {
+    font-size: 18px;
   }
 
   .see-more a {

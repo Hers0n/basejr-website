@@ -1,3 +1,7 @@
+* {
+  text-rendering: optimizeLegibility;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
@@ -11,7 +15,7 @@ body {
 
 .page {
   position: relative;
-}
+} 
 
 .container {
   width: 100%;
@@ -33,7 +37,7 @@ body {
 }
 
 .items {
-  max-width: 320px;
+  max-width: 350px;
   margin: 0 auto 60px;
 
   .item {
@@ -62,6 +66,27 @@ body {
         margin: 0;
         font-weight: $fw-light;
       }
+    }
+  }
+}
+
+.see-more {
+  text-align: center;
+
+  a {
+    display: inline-block;
+    padding: 12px 42px;
+    font-size: 16px;
+    color: $c-text;
+    font-weight: $fw-bold;
+    border: 1px solid $c-text;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 300ms;
+
+    &:hover {
+      background: $c-text;
+      color: $c-text-light;
     }
   }
 }
@@ -98,29 +123,6 @@ body {
   line-height: 26px !important;
   border: 1px solid $c-text-light;
   border-radius: 6px;
-}
-
-
-
-.see-more {
-  text-align: center;
-
-  a {
-    display: inline-block;
-    padding: 12px 42px;
-    font-size: 16px;
-    color: $c-text;
-    font-weight: $fw-bold;
-    border: 1px solid $c-text;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all 300ms;
-
-    &:hover {
-      background: $c-text;
-      color: $c-text-light;
-    }
-  }
 }
 
 @include medium() {
@@ -174,7 +176,7 @@ body {
     max-width: 800px;
 
     .item {
-      max-width: 340px;
+      max-width: 350px;
 
       .text .text-title {
         font-size: 20px;
