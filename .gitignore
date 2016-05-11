@@ -7,3 +7,6 @@ npm-debug.log
 dist/public
 .DS_Store
 .idea
+
+package.dist.json
+server.dist.js
