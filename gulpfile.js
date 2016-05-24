@@ -17,7 +17,6 @@ const middleware = function (req, res, next) {
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
-    .pipe($.include())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
@@ -26,7 +25,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('.tmp/public/styles'))
     .pipe(reload({stream: true}));
 });
 
@@ -37,7 +36,7 @@ gulp.task('scripts', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe(gulp.dest('.tmp/public/scripts'))
     .pipe(reload({stream: true}));
 });
 
@@ -69,13 +68,13 @@ gulp.task('views', () => {
   return gulp.src('app/*.pug')
     .pipe($.plumber())
     .pipe($.pug({pretty: true}))
-    .pipe(gulp.dest('.tmp'))
+    .pipe(gulp.dest('.tmp/public'))
     .pipe(reload({stream: true}));
 });
 
 gulp.task('html', ['views', 'styles', 'scripts'], () => {
-  return gulp.src(['app/*.html', '.tmp/*.html'])
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+  return gulp.src(['app/*.html', '.tmp/public/*.html'])
+    .pipe($.useref({searchPath: ['.tmp/public', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.js', $.rev()))
@@ -113,7 +112,7 @@ gulp.task('serve', ['views', 'styles', 'scripts'], () => {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['.tmp', 'app'],
+      baseDir: ['.tmp/public', 'app'],
       middleware,
       routes: {
         '/bower_components': 'bower_components'
@@ -123,7 +122,7 @@ gulp.task('serve', ['views', 'styles', 'scripts'], () => {
 
   gulp.watch([
     'app/*.html',
-    '.tmp/*.html',
+    '.tmp/public/*.html',
     'app/images/**/*'
   ]).on('change', reload);
 
@@ -155,7 +154,7 @@ gulp.task('serve:test', ['scripts'], () => {
       baseDir: 'test',
       middleware,
       routes: {
-        '/scripts': '.tmp/scripts',
+        '/scripts': '.tmp/public/scripts',
         '/bower_components': 'bower_components'
       }
     }
@@ -181,7 +180,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist/public']));
+gulp.task('clean', del.bind(null, ['.tmp/public', 'dist/public']));
 
 gulp.task('build', ['lint', 'html', 'images', 'extras'], () => {
   return gulp.src('dist/public/**/*').pipe($.size({title: 'build', gzip: true}));
@@ -213,6 +212,109 @@ gulp.task('git-push', ['git-commit'], (cb) => {
 
 gulp.task('publish', ['git-push']);
 
-gulp.task('default', ['clean'], () => {
+gulp.task('app', ['clean'], () => {
   gulp.start('build');
+});
+
+gulp.task('blog:styles', () => {
+  return gulp.src('app/blog/styles/*.scss')
+    .pipe($.plumber())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe(gulp.dest('.tmp/blog/assets'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('blog:scripts', () => {
+  return gulp.src('app/blog/scripts/**/*.js')
+    .pipe($.plumber())
+    .pipe($.include())
+    .pipe($.babel())
+    .pipe(gulp.dest('.tmp/blog/assets'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('blog:html', ['blog:styles', 'blog:scripts'], () => {
+  return gulp.src('app/blog/*.html')
+    .pipe($.useref({searchPath: 'app/blog'}))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.if('*.js', $.rev()))
+    .pipe($.if('*.css', $.rev()))
+    .pipe($.revReplace())
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('dist/blog'));
+});
+
+gulp.task('blog:images', () => {
+  return gulp.src('app/blog/images/**/*')
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true,
+      svgoPlugins: [{cleanupIDs: false}]
+    })))
+    .pipe(gulp.dest('dist/blog/assets'));
+});
+
+gulp.task('blog:extras', () => {
+  return gulp.src([
+    'app/blog/*.*',
+    '!app/blog/*.html'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist/blog/assets'));
+});
+
+gulp.task('blog:build', ['blog:html', 'blog:images', 'blog:extras'], () => {
+  return gulp.src('dist/blog/**/*').pipe($.size({title: 'blog:build', gzip: true}));
+});
+
+gulp.task('blog:clean', del.bind(null, ['.tmp/blog', 'dist/blog']));
+
+gulp.task('blog', ['blog:clean'], () => {
+  gulp.start('blog:build');
+});
+
+gulp.task('blog:serve', ['blog:styles', 'blog:scripts'], () => {
+  browserSync({
+    notify: false,
+    open: false,
+    port: 9090,
+    server: {
+      baseDir: ['.tmp/blog', 'app/blog'],
+      middleware,
+      routes: {
+        '/bower_components': 'bower_components'
+      }
+    }
+  });
+
+  gulp.watch([
+    'app/blog/*.html',
+    '.tmp/blog/*.html',
+    'app/blog/images/**/*'
+  ]).on('change', reload);
+  
+  gulp.watch('app/blog/styles/**/*.scss', ['blog:styles']);
+  gulp.watch('app/blog/scripts/**/*.js', ['blog:scripts']);
+});
+
+gulp.task('blog:serve:dist', () => {
+  browserSync({
+    notify: false,
+    open: false,
+    port: 9090,
+    server: {
+      baseDir: ['dist/blog'],
+      middleware
+    }
+  });
+});
+
+gulp.task('default', () => {
+  $.util.log('Check package.json for tasks!');
 });

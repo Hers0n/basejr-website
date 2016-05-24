@@ -29,6 +29,7 @@
     "gulp-sourcemaps": "^1.5.0",
     "gulp-uglify": "^1.1.0",
     "gulp-useref": "^3.0.0",
+    "gulp-util": "^3.0.7",
     "main-bower-files": "^2.5.0",
     "wiredep": "^2.2.2"
   },
@@ -47,9 +48,17 @@
   },
   "scripts": {
     "postinstall": "bower install; mv package.dist.json dist/package.json; mv server.dist.js dist/server.js",
-    "start": "gulp serve",
-    "serve:dist": "gulp clean; gulp build; gulp serve:dist",
-    "build": "gulp clean; gulp build",
-    "deploy": "gulp clean; gulp build; gulp publish"
+
+    "build": "gulp app; gulp blog",
+    "build:app": "gulp app",
+    "build:blog": "gulp blog",
+
+    "serve:app": "gulp serve",
+    "serve:blog": "gulp blog:serve",
+
+    "preview:app": "gulp app; gulp serve:dist",
+    "preview:blog": "gulp blog; gulp blog:serve:dist",
+
+    "deploy:app": "gulp app; gulp publish"
   }
 }
