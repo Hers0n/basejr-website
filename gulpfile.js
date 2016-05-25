@@ -137,7 +137,7 @@ gulp.task('serve:dist', () => {
   browserSync({
     notify: false,
     open: false,
-    port: 9000,
+    port: 9002,
     server: {
       baseDir: ['dist/public'],
       middleware
@@ -145,28 +145,6 @@ gulp.task('serve:dist', () => {
   });
 });
 
-gulp.task('serve:test', ['scripts'], () => {
-  browserSync({
-    notify: false,
-    open: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      middleware,
-      routes: {
-        '/scripts': '.tmp/public/scripts',
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
-});
-
-// inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/styles/*.scss')
     .pipe(wiredep({

@@ -47,11 +47,11 @@
     }
   },
   "scripts": {
-    "postinstall": "bower install; mv package.dist.json dist/package.json; mv server.dist.js dist/server.js",
+    "postinstall": "composer install; bower install; mv package.dist.json dist/package.json; mv server.dist.js dist/server.js",
     "build": "gulp app",
     "build:blog": "gulp blog",
     "serve": "gulp serve",
-    "serve:api": "php -S localhost:9090 -t ./server/",
+    "serve:api": "php -S localhost:9001 -t ./server/",
     "serve:dist": "gulp serve:dist",
     "deploy": "gulp app; gulp publish"
   }
