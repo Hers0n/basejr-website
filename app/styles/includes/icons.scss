@@ -1,0 +1,24 @@
+[class^="icon-"] {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('../images/sprite-social.png');
+  background-repeat: no-repeat;
+  background-size: 24px 96px;
+}
+
+.icon-facebook {
+  background-position: 0 0;
+}
+
+.icon-instagram {
+  background-position: 0 -24px;
+}
+
+.icon-linkedin {
+  background-position: 0 -48px;
+}
+
+.icon-twitter {
+  background-position: 0 -72px;
+}

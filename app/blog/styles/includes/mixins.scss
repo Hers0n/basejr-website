@@ -1,0 +1,13 @@
+@mixin media-query($media-query) {
+  @if $media-query == large {
+    @media only screen and (min-width: $bp-large) {
+      @content;
+    }
+  }
+}
+
+@mixin large() {
+  @include media-query(large) {
+    @content;
+  }
+}

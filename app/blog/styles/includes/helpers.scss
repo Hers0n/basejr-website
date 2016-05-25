@@ -1,0 +1,57 @@
+* {
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: $ff-lora;
+  font-size: 18px;
+  font-weight: 400;
+  color: $c-text;
+}
+
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+  @include clearfix();
+}
+
+[class^="icon-"] {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('//static.basejr.com.br/blog/images/sprite-social.png') no-repeat 0 0;
+  background-size: 24px 96px;
+}
+
+.icon-facebook {
+  background-position: 0 0;
+}
+
+.icon-instagram {
+  background-position: 0 -24px;
+}
+
+.icon-linkedin {
+  background-position: 0 -48px;
+}
+
+.icon-twitter {
+  background-position: 0 -72px;
+}
+
+[class^="button-"] {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 14px !important;
+  line-height: 26px !important;
+}
+
+@include large() {
+  .container {
+    max-width: $ct-large;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

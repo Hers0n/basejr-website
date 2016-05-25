@@ -7,6 +7,8 @@ body {
   font-size: 16px;
   font-weight: $fw-normal;
   color: $c-text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &.header--expanded {
     overflow: hidden;
@@ -93,29 +95,68 @@ body {
   }
 }
 
-[class^="icon-"] {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-image: url('../images/sprite-social.png');
-  background-repeat: no-repeat;
-  background-size: 24px 96px;
+.wildcard_feed {
+  padding: 60px 0 75px;
+
+  .title {
+    margin-bottom: 20px;
+  }
 }
 
-.icon-facebook {
-  background-position: 0 0;
+.feed-form {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .feed-form-input {
+    margin-bottom: 10px;
+    padding: 6px;
+    border: 1px solid $c-text-medium;
+    border-radius: 6px;
+
+    input {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 8px 12px;
+      border: 0;
+      background: #FFFFFF;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: $fw-light;
+      text-align: center;
+      outline: 0;
+    }
+  }
+
+  .feed-form-button {
+    button {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 14px 12px;
+      border: 0;
+      border-radius: 6px;
+      background: $c-base;
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: $fw-bold;
+      color: #FFFFFF;
+      text-align: center;
+      transition: background 300ms;
+
+      &:hover {
+        background: lighten($c-base, 12%);
+      }
+    }
+  }
 }
 
-.icon-instagram {
-  background-position: 0 -24px;
-}
-
-.icon-linkedin {
-  background-position: 0 -48px;
-}
-
-.icon-twitter {
-  background-position: 0 -72px;
+.feed-message {
+  max-width: 400px;
+  margin: 10px auto 0;
+  font-size: 14px;
+  font-weight: $fw-light;
+  text-align: center;
 }
 
 [class^="button-"] {
@@ -196,5 +237,36 @@ body {
     .item {
       max-width: 350px;
     }
+  }
+
+  .feed-form {
+    max-width: 600px;
+
+    form {
+      @include clearfix();
+    }
+
+    .feed-form-input {
+      float: left;
+      width: 390px;
+      margin-bottom: 0;
+      margin-right: 10px;
+
+      input {
+        text-align: left;
+        font-size: 20px;
+      }
+    }
+
+    .feed-form-button {
+      float: left;
+      width: 200px;
+    }
+  }
+
+  .feed-message {
+    max-width: 600px;
+    margin-top: 20px;
+    font-size: 16px;
   }
 }

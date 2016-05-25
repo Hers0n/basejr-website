@@ -1,0 +1,25 @@
+{block:PostSummary}
+<meta property="og:title" content="{PostSummary} - {Name}" />
+{/block:PostSummary}
+
+<meta property="og:site_name" content="Base Jr. Blog"/>
+
+{block:IndexPage}
+<meta property="og:title" content="{Title}"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:description" content="{MetaDescription}"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+{/block:IndexPage}
+
+{block:PermalinkPage}
+<meta property="og:url" content="{Permalink}"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+
+{block:Posts}
+{block:Text}
+{block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
+<meta property="og:description" content="{PlaintextBody}"/>
+{/block:Text}
+{/block:Posts}
+{/block:PermalinkPage}
