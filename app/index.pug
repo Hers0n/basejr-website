@@ -74,17 +74,5 @@ block content
       .see-more
         a(href='/portfolio.html') Leia mais
 
-  section.wildcard_feed
-    .container
-      h1.title Cadastre-se para receber novos artigos por e-mail
-
-      .feed-form
-        form.js-feed-form
-          .feed-form-input
-            input(type="email" placeholder="Coloque seu e-mail" required)
-          .feed-form-button
-            button(type="submit") Cadastrar
-
-      .feed-message.
-        Receba atualizações, artigos e dicas imperdíveis da Base Jr.
+  include partials/feed-form
 

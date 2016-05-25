@@ -1,0 +1,8 @@
+{
+  "config": {
+    "vendor-dir": "server/vendor"
+  },
+  "require": {
+    "slim/slim": "^3.4"
+  }
+}

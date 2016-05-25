@@ -1,0 +1,197 @@
+.wildcard_feed-form {
+  padding: 60px 0 75px;
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .feed-form {
+    max-width: 400px;
+    margin: 0 auto;
+
+    &.loading,
+    &.done,
+    &.fail {
+      .feed-form-input input {
+        padding-right: 40px;
+      }
+    }
+
+    &.loading {
+      .feed-form-input {
+        .action-loading {
+          opacity: 1;
+        }
+
+        .action-done {
+          opacity: 0;
+        }
+
+        .action-fail {
+          opacity: 0;
+        }
+      }
+
+      .feed-form-button button {
+        background: lighten($c-base, 12%);
+      }
+    }
+
+    &.done {
+      .feed-form-input {
+        .action-loading {
+          opacity: 0;
+        }
+
+        .action-done {
+          opacity: 1;
+        }
+
+        .action-fail {
+          opacity: 0;
+        }
+      }
+
+      .feed-form-button button {
+        background: $c-done;
+
+        &:hover {
+          background: $c-done;
+        }
+      }
+    }
+
+    &.fail {
+      .feed-form-input {
+        .action-loading {
+          opacity: 0;
+        }
+
+        .action-done {
+          opacity: 0;
+        }
+
+        .action-fail {
+          opacity: 1;
+        }
+      }
+
+      .feed-form-button button {
+        background: $c-fail;
+
+        &:hover {
+          background: $c-fail;
+        }
+      }
+    }
+
+    .feed-form-input {
+      position: relative;
+      margin-bottom: 10px;
+      padding: 6px;
+      border: 1px solid $c-text-medium;
+      border-radius: 6px;
+      background: #FFFFFF;
+
+      input {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 8px 12px;
+        border: 0;
+        background: #FFFFFF;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: $fw-light;
+        text-align: center;
+        outline: 0;
+        transition: padding 300ms;
+      }
+
+      .action-loading,
+      .action-done,
+      .action-fail {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      .action-done {
+        color: $c-done;
+      }
+
+      .action-fail {
+        color: $c-fail;
+      }
+    }
+
+    .feed-form-button {
+      button {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 14px 12px;
+        border: 0;
+        border-radius: 6px;
+        background: $c-base;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: $fw-bold;
+        color: #FFFFFF;
+        text-align: center;
+        transition: background 300ms;
+
+        &:hover {
+          background: lighten($c-base, 12%);
+        }
+      }
+    }
+  }
+
+  .feed-message {
+    max-width: 400px;
+    margin: 10px auto 0;
+    font-size: 14px;
+    font-weight: $fw-light;
+    text-align: center;
+  }
+}
+
+@include large() {
+  .wildcard_feed-form {
+    .feed-form {
+      max-width: 600px;
+
+      form {
+        @include clearfix();
+      }
+
+      .feed-form-input {
+        float: left;
+        width: 390px;
+        margin-bottom: 0;
+        margin-right: 10px;
+
+        input {
+
+          text-align: left;
+          font-size: 20px;
+        }
+      }
+
+      .feed-form-button {
+        float: left;
+        width: 200px;
+      }
+    }
+
+    .feed-message {
+      max-width: 600px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  }
+}

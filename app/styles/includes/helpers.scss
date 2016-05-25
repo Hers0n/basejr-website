@@ -95,70 +95,6 @@ body {
   }
 }
 
-.wildcard_feed {
-  padding: 60px 0 75px;
-
-  .title {
-    margin-bottom: 20px;
-  }
-}
-
-.feed-form {
-  max-width: 400px;
-  margin: 0 auto;
-
-  .feed-form-input {
-    margin-bottom: 10px;
-    padding: 6px;
-    border: 1px solid $c-text-medium;
-    border-radius: 6px;
-
-    input {
-      display: block;
-      width: 100%;
-      margin: 0;
-      padding: 8px 12px;
-      border: 0;
-      background: #FFFFFF;
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: $fw-light;
-      text-align: center;
-      outline: 0;
-    }
-  }
-
-  .feed-form-button {
-    button {
-      display: block;
-      width: 100%;
-      margin: 0;
-      padding: 14px 12px;
-      border: 0;
-      border-radius: 6px;
-      background: $c-base;
-      font-size: 20px;
-      line-height: 26px;
-      font-weight: $fw-bold;
-      color: #FFFFFF;
-      text-align: center;
-      transition: background 300ms;
-
-      &:hover {
-        background: lighten($c-base, 12%);
-      }
-    }
-  }
-}
-
-.feed-message {
-  max-width: 400px;
-  margin: 10px auto 0;
-  font-size: 14px;
-  font-weight: $fw-light;
-  text-align: center;
-}
-
 [class^="button-"] {
   display: inline-block;
   margin: 0;
@@ -237,36 +173,5 @@ body {
     .item {
       max-width: 350px;
     }
-  }
-
-  .feed-form {
-    max-width: 600px;
-
-    form {
-      @include clearfix();
-    }
-
-    .feed-form-input {
-      float: left;
-      width: 390px;
-      margin-bottom: 0;
-      margin-right: 10px;
-
-      input {
-        text-align: left;
-        font-size: 20px;
-      }
-    }
-
-    .feed-form-button {
-      float: left;
-      width: 200px;
-    }
-  }
-
-  .feed-message {
-    max-width: 600px;
-    margin-top: 20px;
-    font-size: 16px;
   }
 }

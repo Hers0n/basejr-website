@@ -1,0 +1,16 @@
+section.wildcard_feed-form
+  .container
+    h1.title Cadastre-se para receber novos artigos por e-mail
+
+    .feed-form
+      form.js-feed-form
+        .feed-form-input
+          input(type='email' placeholder='Coloque seu e-mail' required)
+          span.icon-loading.action-loading
+          i(class='material-icons action-done' data-toggle='tooltip' title='Seu e-mail foi cadastrado com sucesso') done
+          i(class='material-icons action-fail' data-toggle='tooltip' title='Algo deu errado, tente novamente mais tarde') error_outline
+        .feed-form-button
+          button(type='submit') Cadastrar
+
+    .feed-message.
+      Receba atualizações, artigos e dicas imperdíveis da Base Jr.

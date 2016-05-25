@@ -1,3 +1,4 @@
+//=require includes/bootstrap.js
 //=require includes/breakpoints.js
 //=require includes/header.js
 //=require includes/feed.js

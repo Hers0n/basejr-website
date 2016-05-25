@@ -51,6 +51,7 @@
     "build": "gulp app",
     "build:blog": "gulp blog",
     "serve": "gulp serve",
+    "serve:api": "php -S localhost:9090 -t ./server/",
     "serve:dist": "gulp serve:dist",
     "deploy": "gulp app; gulp publish"
   }

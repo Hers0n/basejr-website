@@ -1,3 +1,5 @@
+//=require breakpoints.js
+
 const Header = function () {
 
   const $body = $('body');
@@ -5,17 +7,19 @@ const Header = function () {
   const $btn = $('.js-header-menu-toggle').first();
 
   function init() {
-    $btn.on('click', expandCallback);
+    $btn.on('click', expandedCallback);
 
-    $(window).on('scroll', fixCallback);
+    $(window).on('scroll', fixedCallback);
+
+    $(window).on('resize', resetCallback);
   }
 
-  function expandCallback() {
+  function expandedCallback() {
     $header.toggleClass('header--expanded');
     $body.toggleClass('header--expanded');
   }
 
-  function fixCallback() {
+  function fixedCallback() {
     if ($(window).scrollTop() >= 100) {
       $header.addClass('header--fixed');
     } else {
@@ -23,8 +27,15 @@ const Header = function () {
     }
   }
 
+  function resetCallback() {
+    if(Breakpoint.is('not small')) {
+      $header.removeClass('header--expanded');
+      $body.removeClass('header--expanded');
+    }
+  }
+
   return {
     init
   }
-  
+
 }();

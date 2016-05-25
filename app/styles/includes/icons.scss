@@ -2,8 +2,7 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url('../images/sprite-social.png');
-  background-repeat: no-repeat;
+  background: url('../images/sprite-social.png') no-repeat 0 0;
   background-size: 24px 96px;
 }
 
@@ -21,4 +20,9 @@
 
 .icon-twitter {
   background-position: 0 -72px;
+}
+
+.icon-loading {
+  background: url('../images/icon-loading.gif') no-repeat center center;
+  background-size: 24px 24px;
 }

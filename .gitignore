@@ -10,3 +10,6 @@ dist/public
 
 package.dist.json
 server.dist.js
+
+composer.lock
+server/vendor
