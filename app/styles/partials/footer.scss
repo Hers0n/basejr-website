@@ -1,0 +1,28 @@
+.footer {
+  background: $bg-color-expanded;
+
+  .menu-navigation {
+    padding-bottom: 35px;
+  }
+}
+
+.footer-menu {
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+@include medium() {
+  .footer {
+
+    .menu-navigation {
+      padding: 20px 0 0;
+    }
+  }
+}

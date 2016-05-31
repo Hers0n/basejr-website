@@ -241,6 +241,22 @@ gulp.task('blog', ['blog:clean'], () => {
   gulp.start('blog:build');
 });
 
+gulp.task('server:clean', del.bind(null, ['dist/server']));
+
+gulp.task('server:data', () => {
+  return gulp.src('server/data/*.json')
+    .pipe(gulp.dest('dist/server/data'));
+});
+
+gulp.task('server:build', ['server:data'], () => {
+  return gulp.src(['server/*.*', '!server/*.lock'])
+    .pipe(gulp.dest('dist/server'));
+});
+
+gulp.task('server', ['server:clean'], () => {
+  gulp.start('server:build');
+});
+
 gulp.task('default', () => {
   $.util.log('Check package.json for tasks!');
 });

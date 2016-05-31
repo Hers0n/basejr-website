@@ -14,30 +14,6 @@ if header_dark
         i.material-icons menu
 
     .header-menu
-      nav.header-menu-navigation
-        ul
-          li
-            a(href='/sobre.html') Sobre
-          li
-            a(href='/portfolio.html') Portfólio
-          li
-            a(href='/blog.html') Blog
-          li
-            a(href='/contato.html') Contato
-          li
-            a(href='/participe.html').button-joinus Participe
+      include menu-navigation
 
-      nav.header-menu-social
-        ul
-          li
-            a(href='#')
-              span.icon-facebook
-          li
-            a(href='#')
-              span.icon-instagram
-          li
-            a(href='#')
-              span.icon-linkedin
-          li
-            a(href='#')
-              span.icon-twitter
+      include menu-social
