@@ -1,5 +1,5 @@
-.wildcard_feed-form {
-  padding: 60px 0 75px;
+.partial_feed-form {
+  background: $c-text-medium;
 
   .title {
     margin-bottom: 20px;
@@ -161,7 +161,7 @@
 }
 
 @include large() {
-  .wildcard_feed-form {
+  .partial_feed-form {
     .feed-form {
       max-width: 600px;
 

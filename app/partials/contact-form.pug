@@ -1,0 +1,92 @@
+section(id='contato' class='page-section partial_contact-form')
+  .container
+    .contact-info
+      h1.title Informações de Contato
+
+      .items
+        .item
+          .image
+            i.material-icons map
+          .text
+            p.text-title Endereço
+            p.text-content.
+              Centro de Técnologia
+              #[br]
+              Anexo C - Sala 1103A
+              #[br]
+              Av. Roraima nº 1000
+              #[br]
+              Cidade Universitária
+              #[br]
+              Bairro Camobi
+              #[br]
+              Santa Maria - RS
+              #[br]
+              CEP: 97105-900
+
+      .items
+        .item
+          .image
+            i.material-icons email
+          .text
+            p.text-title Email
+            p.text-content
+              a(href='mailto:contato@basejr.com.br') contato@basejr.com.br
+
+      .items
+        .item
+          .image
+            i.material-icons contact_phone
+          .text
+            p.text-title Telefone
+            p.text-content
+              a(href='tel:5512341234') (55) 12341234
+
+
+    .contact-form
+      h1.title Mensagem
+
+      form.js-contact-form
+        .items
+          .item
+            .text
+              p.text-title Nome
+              .form-input
+                input(type='text' id='contact-form-name' )
+
+        .items
+          .item
+            .text
+              p.text-title Email
+              .form-input
+                input(type='email' id='contact-form-email' )
+
+        .items
+          .item
+            .text
+              p.text-title Assunto
+              .form-input
+                span.select-active.js-contact-form-select-placeholder Informações
+                i.material-icons arrow_drop_down
+                select(class='js-contact-form-select' id='contact-form-subject' )
+                  option(value='informacoes') Informações
+                  option(value='processo_seletivo') Processo Seletivo
+                  option(value='orcamento') Orçamento
+                  option(value='certificados') Certificados
+                  option(value='benchmarking') Benchmarking
+                  option(value='outros') Outros
+
+        .items
+          .item
+            .text
+              p.text-title Mensagem
+              .form-input
+                textarea(id='contact-form-message' )
+
+        .items.contact-form-submit
+          .item
+            .text
+              button(id='contact-form-submit' type='submit') Enviar
+              span.icon-loading.action-loading
+              i(class='material-icons action-done' data-toggle='tooltip' title='Sua mensagem foi enviada com sucesso') done
+              i(class='material-icons action-fail' data-toggle='tooltip' title='Algo deu errado, tente novamente mais tarde') error_outline

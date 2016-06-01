@@ -15,11 +15,12 @@
 @import "includes/helpers";
 
 // partials
-@import "partials/header";
-@import "partials/footer";
 @import "partials/feed-form";
 @import "partials/menu-navigation";
 @import "partials/menu-social";
+@import "partials/contact-form";
+@import "partials/header";
+@import "partials/footer";
 
 // pages
 @import "pages/index";

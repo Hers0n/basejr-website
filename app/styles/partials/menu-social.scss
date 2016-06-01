@@ -3,9 +3,9 @@
   flex-grow: 0;
   flex-shrink: 0;
   width: 100%;
+  padding: 20px 0;
 
   ul {
-    padding: 20px 0;
     font-size: 0;
     text-align: center;
     @include clearfix();

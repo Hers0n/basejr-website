@@ -1,0 +1,244 @@
+.partial_contact-form {
+  //background: $c-text-medium;
+  padding-bottom: 30px;
+
+  .contact-info {
+    .items {
+      margin-bottom: 30px;
+    }
+
+    .item .text {
+      .text-title {
+        font-size: 18px;
+      }
+
+      .text-content {
+        font-size: 16px;
+
+        a {
+          color: $c-base;
+          text-decoration: none;
+          transition: color 300ms;
+
+          &:hover {
+            color: $c-text;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-form {
+    &.loading {
+      .contact-form-submit {
+        .action-loading {
+          opacity: 1;
+        }
+
+        .action-done {
+          opacity: 0;
+        }
+
+        .action-fail {
+          opacity: 0;
+        }
+
+        button {
+          background: lighten($c-base, 12%);
+        }
+      }
+    }
+
+    &.done {
+      .contact-form-submit {
+        .action-loading {
+          opacity: 0;
+        }
+
+        .action-done {
+          opacity: 1;
+        }
+
+        .action-fail {
+          opacity: 0;
+        }
+
+        button {
+          background: $c-done;
+
+          &:hover {
+            background: $c-done;
+          }
+        }
+      }
+    }
+
+    &.fail {
+      .contact-form-submit {
+        .action-loading {
+          opacity: 0;
+        }
+
+        .action-done {
+          opacity: 0;
+        }
+
+        .action-fail {
+          opacity: 1;
+        }
+
+        button {
+          background: $c-fail;
+
+          &:hover {
+            background: $c-fail;
+          }
+        }
+      }
+    }
+
+    .items {
+      margin-bottom: 30px;
+    }
+
+    .item {
+      width: 100%;
+      max-width: none;
+
+      .text .text-title {
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+
+    .form-input {
+      position: relative;
+      padding: 6px;
+      border: 1px solid $c-text-medium;
+      border-radius: 6px;
+      background: #FFFFFF;
+
+      input,
+      textarea,
+      .select-active {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 4px 12px;
+        border: 0;
+        background: #FFFFFF;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: $fw-light;
+        text-align: left;
+        outline: 0;
+      }
+
+      textarea {
+        height: 120px;
+        resize: none;
+      }
+
+      .select-active {
+        cursor: pointer;
+      }
+
+      i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 0;
+        background: #FFFFFF;
+        opacity: 0;
+        cursor: pointer;
+        outline: 0;
+      }
+    }
+
+    .contact-form-submit {
+      position: relative;
+
+      button {
+        display: inline-block;
+        margin: 0;
+        padding: 10px 32px;
+        line-height: 26px;
+        font-size: 18px;
+        font-weight: $fw-bold;
+        color: #FFFFFF;
+        background: $c-base;
+        border: 0;
+        border-radius: 6px;
+        transition: background 300ms;
+
+        &:hover {
+          background: lighten($c-base, 12%);
+        }
+      }
+
+      .action-loading,
+      .action-done,
+      .action-fail {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 20px;
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      .action-done {
+        color: $c-done;
+      }
+
+      .action-fail {
+        color: $c-fail;
+      }
+    }
+  }
+}
+
+@include medium() {
+  .partial_contact-form {
+
+    .title {
+      text-align: left;
+    }
+
+    .items .item {
+      float: left;
+      text-align: left;
+    }
+
+    .contact-info {
+      float: left;
+      width: 50%;
+    }
+
+    .contact-form {
+      float: left;
+      width: 50%;
+      padding-left: 30px;
+    }
+  }
+}
+
+@include large() {
+  .partial_contact-form {
+    .contact-form {
+      padding-left: 60px;
+    }
+  }
+}

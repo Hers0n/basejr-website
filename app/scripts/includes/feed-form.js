@@ -1,6 +1,6 @@
 //=require breakpoints.js
 
-const Feed = function () {
+const FeedForm = function () {
 
   const $form = $('.js-feed-form').first();
 
@@ -11,7 +11,7 @@ const Feed = function () {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const url = 'http://localhost:9090/mail';
+    const url = App.globals().api + '/mail';
     const $input = $form.find('input').first();
     const $button = $form.find('button').first();
     const $actionFail = $form.find('.action-fail').first();

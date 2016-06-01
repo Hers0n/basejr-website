@@ -7,18 +7,14 @@
 }
 
 @include medium() {
-  .sobre_explained {
-    .items .item .text {
-      text-align: left;
-      text-indent: 60px;
-    }
+  .sobre_welcome .items .item .text {
+    text-align: left;
+    text-indent: 60px;
   }
 }
 
 @include large() {
-  .sobre_explained {
-    .items .item:last-child {
-      max-width: 500px;
-    }
+  .sobre_welcome .items .item:last-child {
+    max-width: 500px;
   }
 }

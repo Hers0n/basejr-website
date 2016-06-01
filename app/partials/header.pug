@@ -1,12 +1,12 @@
-- var header = "header class='header'";
+- var extra_classes = " ";
 
 if header_dark
-  - var header = "header class='header header--dark'";
+  - extra_classes += "header--dark";
 
-#{header}
+header(class='header' + extra_classes)
   .container
     .header-logo
-      a(href='/')
+      a(href='/').js-jump-top
         img(src='../images/icon-logo.png')
 
     .header-button

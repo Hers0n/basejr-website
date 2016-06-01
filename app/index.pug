@@ -1,7 +1,7 @@
 extends layouts/default
 
 block content
-  section.index_welcome
+  section.page-section.index_welcome
     .container
       h1.main-title.
         Soluções personalizadas
@@ -11,7 +11,7 @@ block content
         Desenvolvemos pessoas e concretizamos sonhos
     i.keep-going.material-icons keyboard_arrow_down
 
-  section.index_about
+  section.page-section.index_about
     .container
       h1.title Conheça a nossa Empresa Júnior
 
@@ -33,7 +33,7 @@ block content
       .see-more
         a(href='/sobre.html') Leia mais
 
-  section.index_portfolio
+  section.page-section.index_portfolio
     .container
       h1.title Conheça os nossos produtos
 
@@ -76,3 +76,7 @@ block content
 
   include partials/feed-form
 
+  include partials/contact-form
+
+  section.page-section.index_contact-map.js-contact-map
+    | <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJHwnm0uC1A5URc05nmyTMnec&key=AIzaSyBsAa9ARgtjhMNaxY5NQqO_dGDgqSTd7ik" allowfullscreen></iframe>
