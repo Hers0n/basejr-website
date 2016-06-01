@@ -6,9 +6,9 @@
 
 const App = function () {
 
-  const $logoLink = $('.js-jump-top').first();
-  const $contactLink = $('.js-jump-contact').first();
-  const $joinusLink = $('.js-jump-joinus').first();
+  const $logoLink = $('.js-jump-top');
+  const $contactLink = $('.js-jump-contact');
+  const $joinusLink = $('.js-jump-joinus');
 
   function init() {
     Header.init();

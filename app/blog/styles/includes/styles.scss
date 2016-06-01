@@ -33,6 +33,7 @@
 
   span {
     float: left;
+    margin-left: 10px;
     font-family: $ff-roboto-slab;
     font-size: 20px;
     font-weight: 300;
@@ -62,6 +63,50 @@
     font-family: $ff-roboto-slab;
     font-size: 42px;
     font-weight: 300;
+  }
+}
+
+.permalink-page,
+.index-page {
+  padding: 30px 0;
+}
+
+.post {
+  margin: 0 0 60px;
+
+  .post-title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 20px;
+  }
+
+  .post-date {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 0 20px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .post-body {
+    p {
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    figure {
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .post-share {
+    display: none;
   }
 }
 
