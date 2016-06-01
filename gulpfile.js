@@ -1,4 +1,3 @@
-// generated on 2016-05-09 using generator-webapp 2.1.0
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
@@ -52,16 +51,6 @@ gulp.task('lint', () => {
     fix: true
   })
     .pipe(gulp.dest('app/scripts'));
-});
-
-gulp.task('lint:test', () => {
-  return lint('test/spec/**/*.js', {
-    fix: true,
-    env: {
-      mocha: true
-    }
-  })
-    .pipe(gulp.dest('test/spec/**/*.js'));
 });
 
 gulp.task('views', () => {
@@ -166,7 +155,7 @@ gulp.task('app', ['clean'], () => {
 });
 
 gulp.task('blog:styles', () => {
-  return gulp.src('app/blog/styles/*.scss')
+  return gulp.src('blog/styles/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
@@ -178,7 +167,7 @@ gulp.task('blog:styles', () => {
 });
 
 gulp.task('blog:scripts', () => {
-  return gulp.src('app/blog/scripts/**/*.js')
+  return gulp.src('blog/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.include())
     .pipe($.babel())
@@ -186,13 +175,13 @@ gulp.task('blog:scripts', () => {
 });
 
 gulp.task('blog:html', ['blog:styles', 'blog:scripts'], () => {
-  return gulp.src('app/blog/*.html')
+  return gulp.src('blog/*.html')
     .pipe($.include())
     .pipe(gulp.dest('dist/blog'));
 });
 
 gulp.task('blog:images', () => {
-  return gulp.src('app/blog/images/**/*')
+  return gulp.src('blog/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true,
@@ -211,16 +200,16 @@ gulp.task('blog', ['blog:clean'], () => {
   gulp.start('blog:build');
 });
 
-gulp.task('server:clean', del.bind(null, ['dist/internal']));
+gulp.task('server:clean', del.bind(null, ['dist/server']));
 
 gulp.task('server:data', () => {
   return gulp.src('server/data/*.*')
-    .pipe(gulp.dest('dist/internal/data'));
+    .pipe(gulp.dest('dist/server/data'));
 });
 
 gulp.task('server:build', ['server:data'], () => {
   return gulp.src(['server/*.*', 'server/.htaccess', '!server/*.lock'])
-    .pipe(gulp.dest('dist/internal'));
+    .pipe(gulp.dest('dist/server'));
 });
 
 gulp.task('server', ['server:clean'], () => {

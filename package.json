@@ -22,8 +22,6 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
     "gulp-pug": "^3.0.1",
-    "gulp-rev": "^7.0.0",
-    "gulp-rev-replace": "^0.4.3",
     "gulp-sass": "^2.0.0",
     "gulp-size": "^1.2.1",
     "gulp-sourcemaps": "^1.5.0",
@@ -48,12 +46,12 @@
   },
   "scripts": {
     "postinstall": "bower install && cd server && composer install",
-    "build": "npm run build:app && npm run build:blog && npm run build:internal",
+    "build": "npm run build:app && npm run build:blog && npm run build:server",
     "build:app": "gulp app",
     "build:blog": "gulp blog",
-    "build:internal": "gulp server && mkdir dist/internal/vendor && echo 'Deny from all' >dist/internal/vendor/.htaccess && echo 'Deny from all' >dist/internal/data/.htaccess && cd dist/internal && composer install",
-    "serve": "gulp serve",
-    "serve:internal": "php -S localhost:9001 -t ./server/",
-    "serve:dist": "gulp serve:dist"
+    "build:server": "gulp server && mkdir dist/server/vendor && echo 'Deny from all' >dist/server/vendor/.htaccess && echo 'Deny from all' >dist/server/data/.htaccess && cd dist/server && composer install",
+    "preview:app": "gulp serve",
+    "preview:public": "gulp serve:dist",
+    "preview:server": "php -S localhost:9001 -t ./server/"
   }
 }

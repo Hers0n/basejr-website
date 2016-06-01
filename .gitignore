@@ -1,15 +1,20 @@
-node_modules
-.tmp
-bower_components
-test/bower_components
-
-npm-debug.log
-dist/public
-.DS_Store
+# Idea
 .idea
 
-package.dist.json
-server.dist.js
+# Node
+node_modules
+npm-debug.log
 
-composer.lock
+# Bower
+bower_components
+
+# Composer
+server/composer.lock
 server/vendor
+
+# Build
+dist
+
+# Others
+.tmp
+.DS_Store

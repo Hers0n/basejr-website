@@ -1,20 +1,22 @@
 # Base Jr.
-  - [https://basejr-website.herokuapp.com/](https://basejr-website.herokuapp.com/)
+  - `app` @ [http://www.basejr.com.br](http://www.basejr.com.br)
+  - `blog` @ [http://blog.basejr.com.br](http://blog.basejr.com.br)
+  - `server` @ [http://internal.basejr.com.br](http://internal.basejr.com.br)
 
-### global dependencies
+### dependencies
   - composer
   - npm
   - bower
   - gulp
 
-### development
-  - clone this && cd this
-  - `npm install` - install all dependencies including composer and bower
+### setup
+  - `npm install`
   
 ### tasks
-  - `npm run build` - builds the app to `dist/public`
-  - `npm run build:blog` - builds the blog to `dist/blog`
-  - `npm run serve` - serves the app at [http://localhost:9000](http://localhost:9000) (file watcher enabled)
-  - `npm run serve:api` - serves the API at [http://localhost:9001](http://localhost:9001)
-  - `npm run serve:dist` - serves `dist/public` at [http://localhost:9002](http://localhost:9002)
-  - `npm run deploy` - builds and deploys the app to [https://basejr-website.herokuapp.com/](https://basejr-website.herokuapp.com/)
+  - `npm run build` - builds everything
+  - `npm run build:app` - builds `app` to `dist/public`
+  - `npm run build:blog` - builds `blog` to `dist/blog`
+  - `npm run build:server` - builds `server` to `dist/server`
+  - `npm run preview:app` - serves `app` @ [http://localhost:9000](http://localhost:9000)
+  - `npm run preview:public` - serves `dist/public` @ [http://localhost:9002](http://localhost:9002)
+  - `npm run preview:server` - serves `server` @ [http://localhost:9001](http://localhost:9001)
