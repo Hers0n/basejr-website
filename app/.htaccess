@@ -1,0 +1,7 @@
+DirectoryIndex index.php index.html
+ErrorDocument 401 "Unauthorized"
+ErrorDocument 403 "Forbidden"
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^basejr.com.br$
+RewriteRule (.*) http://www.basejr.com.br/$1 [R=301,L]
