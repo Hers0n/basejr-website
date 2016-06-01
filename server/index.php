@@ -68,48 +68,52 @@ $app->post('/contact', function (request $request, Response $response) {
     if ($name && $email && filter_var($email, FILTER_VALIDATE_EMAIL) && $subject && $message) {
 
         $mail = new PHPMailer;
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0;
-        $mail->Host = gethostbyname('smtp.gmail.com');
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPAuth = true;
-
-        //Username to use for SMTP authentication - use full email address for gmail
-        $mail->Username = "sitebasejr@gmail.com";
-
-        //Password to use for SMTP authentication
-        $mail->Password = "basebase";
 
         //Set who the message is to be sent from
-        $mail->setFrom('contato@basejr.com.br', 'Contato Base Jr.');
+        $mail->setFrom('noreply@basejr.com.br', 'Base Jr. Website');
 
         //Set an alternative reply-to address
         $mail->addReplyTo('contato@basejr.com.br', 'Contato Base Jr.');
 
         //Set who the message is to be sent to
-        $mail->addAddress($email, $name);
+        $mail->addAddress('contato@basejr.com.br', 'Contato Base Jr.');
 
         //Set the subject line
-        $mail->Subject = $subject;
+        $mail->Subject = '[Website - Contato]';
 
-        $mail->Body = $message;
+        $mail->Body = ''
+            . '<h3>Informações:</h3>'
+            . '<ul>'
+            . '<li>Nome: <b>' . $name . '</b></li>'
+            . '<li>Email: <b>' . $email . '</b></li>'
+            . '<li>Assunto: <b>' . $subject . '</b></li>'
+            . '<li>Data: <b>' . date('H:i - d.m.Y') . '</b></li>'
+            . '</ul>'
+            . '<h3>Mensagem:</h3>'
+            . '<p>' . $message . '</p>'
+            . '<br />'
+            . '<p style="font-style: italic">Esse email foi gerado automaticamente, por favor, não responda.</p>';
 
-        if (!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+        $mail->AltBody = ''
+            . '<h3>Informações:</h3>'
+            . '<ul>'
+            . '<li>Nome: <b>' . $name . '</b></li>'
+            . '<li>Email: <b>' . $email . '</b></li>'
+            . '<li>Assunto: <b>' . $subject . '</b></li>'
+            . '<li>Data: <b>' . date('H:i - d.m.Y') . '</b></li>'
+            . '</ul>'
+            . '<h3>Mensagem:</h3>'
+            . '<p>' . $message . '</p>'
+            . '<br />'
+            . '<p style="font-style: italic">Esse email foi gerado automaticamente, por favor, não responda.</p>';
 
-        } else {
-            echo "Message sent!";
+        if ($mail->send()) {
             $status = 200;
         }
     }
 
     $newResponse = $response->withStatus($status);
     return $newResponse;
-});
-
-$app->get('/data/email-list.json', function () use ($app) {
-    $app->halt(404);
 });
 
 $app->run();
