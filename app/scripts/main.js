@@ -28,8 +28,8 @@ const App = function () {
 
   function globals() {
     return {
-      hostname: 'http://localhost:9000',
-      api: 'http://localhost:9001'
+      hostname: 'http://www.basejr.com.br',
+      api: 'http://internal.basejr.com.br'
     };
   }
 
@@ -69,7 +69,7 @@ const App = function () {
 
     } else {
       $('html, body').animate({
-        scrollTop: $("#" + href).offset().top - 50
+        scrollTop: $('#' + href).offset().top - 50
       }, 'slow');
     }
   }

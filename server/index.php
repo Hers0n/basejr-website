@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:9000');
+header('Access-Control-Allow-Origin: *');
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -108,45 +108,8 @@ $app->post('/contact', function (request $request, Response $response) {
     return $newResponse;
 });
 
-$app->get('/test', function (request $request, Response $response) {
-    $mail = new PHPMailer;
-    $mail->isSMTP();
-
-    $mail->SMTPDebug = 2;
-    $mail->Debugoutput = 'html';
-
-    $mail->SMTPSecure = 'tls';
-    $mail->Host = gethostbyname('smtp.gmail.com');
-    $mail->Port = 587;
-
-    $mail->SMTPAuth = true;
-
-    //Username to use for SMTP authentication - use full email address for gmail
-    $mail->Username = "sitebasejr@gmail.com";
-
-    //Password to use for SMTP authentication
-    $mail->Password = "basebase";
-
-    //Set who the message is to be sent from
-    $mail->setFrom('sitebasejr@gmail.com', 'Base Jr Website');
-
-    //Set an alternative reply-to address
-    $mail->addReplyTo('sitebasejr@gmail.com', 'Base Jr Website');
-
-    //Set who the message is to be sent to
-    $mail->addAddress('dallrigo@gmail.com', 'Base Jr Contato');
-
-    //Set the subject line
-    $mail->Subject = 'test subject';
-
-    $mail->Body = 'test body';
-
-    if (!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-
-    } else {
-        echo "Message sent!";
-    }
+$app->get('/data/email-list.json', function () use ($app) {
+    $app->halt(404);
 });
 
 $app->run();

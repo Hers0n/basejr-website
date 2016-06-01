@@ -40,7 +40,7 @@ section(id='contato' class='page-section partial_contact-form')
           .text
             p.text-title Telefone
             p.text-content
-              a(href='tel:5512341234') (55) 12341234
+              a(href='tel:5581003212') (55) 8100-3212
 
 
     .contact-form
@@ -52,14 +52,14 @@ section(id='contato' class='page-section partial_contact-form')
             .text
               p.text-title Nome
               .form-input
-                input(type='text' id='contact-form-name' )
+                input(type='text' id='contact-form-name' required)
 
         .items
           .item
             .text
               p.text-title Email
               .form-input
-                input(type='email' id='contact-form-email' )
+                input(type='email' id='contact-form-email' required)
 
         .items
           .item
@@ -68,7 +68,7 @@ section(id='contato' class='page-section partial_contact-form')
               .form-input
                 span.select-active.js-contact-form-select-placeholder Informações
                 i.material-icons arrow_drop_down
-                select(class='js-contact-form-select' id='contact-form-subject' )
+                select(class='js-contact-form-select' id='contact-form-subject' required)
                   option(value='informacoes') Informações
                   option(value='processo_seletivo') Processo Seletivo
                   option(value='orcamento') Orçamento
@@ -81,7 +81,7 @@ section(id='contato' class='page-section partial_contact-form')
             .text
               p.text-title Mensagem
               .form-input
-                textarea(id='contact-form-message' )
+                textarea(id='contact-form-message' required)
 
         .items.contact-form-submit
           .item
