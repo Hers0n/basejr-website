@@ -4,7 +4,6 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
-const exec = require('child_process').exec;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -78,9 +77,6 @@ gulp.task('html', ['views', 'styles', 'scripts'], () => {
     .pipe($.useref({searchPath: ['.tmp/public', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if('*.js', $.rev()))
-    .pipe($.if('*.css', $.rev()))
-    .pipe($.revReplace())
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist/public'));
 });
@@ -165,32 +161,6 @@ gulp.task('build', ['lint', 'html', 'images', 'extras'], () => {
   return gulp.src('dist/public/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('git-add', (cb) => {
-  exec('cd dist/; git add .', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
-
-gulp.task('git-commit', ['git-add'], (cb) => {
-  exec('cd dist/; git commit -am "automated commit"', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
-
-gulp.task('git-push', ['git-commit'], (cb) => {
-  exec('cd dist/; git push heroku master', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
-
-gulp.task('publish', ['git-push']);
-
 gulp.task('app', ['clean'], () => {
   gulp.start('build');
 });
@@ -241,16 +211,16 @@ gulp.task('blog', ['blog:clean'], () => {
   gulp.start('blog:build');
 });
 
-gulp.task('server:clean', del.bind(null, ['dist/server']));
+gulp.task('server:clean', del.bind(null, ['dist/internal']));
 
 gulp.task('server:data', () => {
-  return gulp.src('server/data/*.json')
-    .pipe(gulp.dest('dist/server/data'));
+  return gulp.src('server/data/*.*')
+    .pipe(gulp.dest('dist/internal/data'));
 });
 
 gulp.task('server:build', ['server:data'], () => {
-  return gulp.src(['server/*.*', '!server/*.lock'])
-    .pipe(gulp.dest('dist/server'));
+  return gulp.src(['server/*.*', 'server/.htaccess', '!server/*.lock'])
+    .pipe(gulp.dest('dist/internal'));
 });
 
 gulp.task('server', ['server:clean'], () => {

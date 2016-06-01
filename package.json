@@ -47,13 +47,13 @@
     }
   },
   "scripts": {
-    "postinstall": "composer install; bower install; mv package.dist.json dist/package.json; mv server.dist.js dist/server.js",
-    "build": "gulp app",
+    "postinstall": "bower install && cd server && composer install",
+    "build": "npm run build:app && npm run build:blog && npm run build:internal",
+    "build:app": "gulp app",
     "build:blog": "gulp blog",
-    "build:internal": "gulp server",
+    "build:internal": "gulp server && mkdir dist/internal/vendor && echo 'Deny from all' >dist/internal/vendor/.htaccess && echo 'Deny from all' >dist/internal/data/.htaccess && cd dist/internal && composer install",
     "serve": "gulp serve",
     "serve:internal": "php -S localhost:9001 -t ./server/",
-    "serve:dist": "gulp serve:dist",
-    "deploy": "gulp app; gulp publish"
+    "serve:dist": "gulp serve:dist"
   }
 }
